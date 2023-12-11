@@ -39,7 +39,6 @@ public:
   // Items related methods. LIFO(last In, Firts Out)
   void addItem(shared_ptr<Item> item);
   shared_ptr<Item> popItem();
-  shared_ptr<Item> findItemByName(const string &itemName);
   // Other methods
   void sendNotification() const;
   void printReport() const;

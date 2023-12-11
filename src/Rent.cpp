@@ -50,20 +50,6 @@ shared_ptr<Item> Rent::popItem()
   return nullptr; // Return nullptr if this cant find any item
 }
 
-shared_ptr<Item> Rent::findItemByName(const string &itemName)
-{
-  auto it = find_if(items.begin(), items.end(), [&itemName](const shared_ptr<Item> &item)
-                    { return item->getProduct()->getName() == itemName; });
-
-  if (it != items.end())
-  {
-    auto foundItem = *it;
-    items.erase(it);
-    return foundItem;
-  }
-
-  return nullptr;
-}
 void Rent::sendNotification() const
 {
   // Obtener el contacto del cliente
