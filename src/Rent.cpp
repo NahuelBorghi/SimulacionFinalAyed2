@@ -14,7 +14,14 @@ void Rent::setClient(shared_ptr<Client> newClient) { client = newClient; }
 
 void Rent::setDurationInDays(int newDuration) { durationInDays = newDuration; }
 
-void Rent::addItem(shared_ptr<Item> item) { items.push_back(item); }
+void Rent::addItem(shared_ptr<Item> item)
+{
+  if (!item->getProduct())
+  {
+    throw invalid_argument("Item must have a Product");
+  }
+  items.push_back(item);
+}
 
 shared_ptr<Item> Rent::popItem()
 {

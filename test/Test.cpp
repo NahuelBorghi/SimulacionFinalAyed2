@@ -123,10 +123,10 @@ TEST_CASE("Exception thrown when adding Item without Product", "[addItem method]
   chango rent1 = make_shared<Rent>(client1, 7);
 
   // Act & Assert                                                                 |
-  REQUIRE_THROWS_AS(rent1->addItem(make_shared<Item>(2, nullptr)), std::invalid_argument);
+  REQUIRE_THROWS_AS(rent1->addItem(make_shared<Item>(2, nullptr)), invalid_argument);
 }
 TEST_CASE("Exception thrown for invalid contact method", "[Client constructor]")
 {
   // Arrange, Act & Assert                                                        |
-  REQUIRE_THROWS_AS(make_shared<Client>("Jose Luis Oemig", 30456987, "InvalidContact"), std::invalid_argument);
+  REQUIRE_THROWS_AS(make_shared<Client>("Jose Luis Oemig", 30456987, "InvalidContact"), invalid_argument);
 }

@@ -1,7 +1,13 @@
-#include "Client.hpp"
+#include <Client.hpp>
 
 Client::Client(const string &name, int dni, const string &contact)
-    : name(name), dni(dni), contact(contact) {}
+    : name(name), dni(dni), contact(contact)
+{
+    if (contact != "Whatsapp" && contact != "Instagram" && contact != "Facebook")
+    {
+        throw invalid_argument("Invalid contact method");
+    }
+}
 
 // Setters
 void Client::setName(const string &name) { this->name = name; }
