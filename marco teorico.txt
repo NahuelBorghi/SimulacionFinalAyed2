@@ -1,5 +1,5 @@
 1. ¿Cómo desarrollaría conceptualmente la arquitectura limpia? Desarrolle un esquema gráfico
-que muestre las dependencias..
+que muestre las dependencias.. (el diagrama esta en la carpeta model)
 2. ¿Qué es UML y en que lo beneficiaría aplicarlo en este caso?
 3. ¿Cómo evitaría las dependencias excesivas el código?:
 3.1 Relacione con S.O.L.I.D
