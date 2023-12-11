@@ -2,7 +2,23 @@
 
 using namespace std;
 
-Rent::Rent(shared_ptr<Client> client, int durationInDays) : client(client), durationInDays(durationInDays) {}
+int Rent::nextRentID = 1;
+
+Rent::Rent(shared_ptr<Client> client, int durationInDays, Inventory &inventory) : client(client), durationInDays(durationInDays), rentID(nextRentID++)
+{
+  // Asignar productos disponibles al alquiler y cambiar su estado a Rented
+  auto &inventoryItems = inventory.getItems();
+  for (auto &inventoryItem : inventoryItems)
+  {
+    if (inventoryItem.state == ItemState::Available)
+    {
+      addItem(std::make_shared<Item>(1, inventoryItem.product));
+      inventoryItem.state = ItemState::Rented;
+    }
+  }
+}
+
+int Rent::getId() const { return rentID; }
 
 shared_ptr<Client> Rent::getClient() const { return client; }
 
@@ -85,4 +101,17 @@ void Rent::sendNotification() const
     // Manejar el caso en que el messenger no se haya creado correctamente
     cout << "Error: No se pudo crear el messenger\n";
   }
+}
+
+void Rent::printReport() const
+{
+  cout << "Rent ID: " << rentID << endl
+       << "Client: " << client->getName() << endl
+       << "Duration: " << durationInDays << " days" << endl
+       << "Items rented:" << endl;
+  for (const auto &item : items)
+  {
+    cout << "- " << item->getQuantity() << " | " << item->getProduct()->getName() << endl;
+  }
+  cout << endl;
 }
