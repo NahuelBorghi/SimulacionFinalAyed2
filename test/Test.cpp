@@ -89,25 +89,35 @@ TEST_CASE("Correct getName from Product", "[getName method]")
 //
 // Rent   -------------------------------------------------------------------------
 //
-TEST_CASE("Correct addItem and getItem from Rent", "[getItem method]")
+TEST_CASE("Correct addItem and popItem from Rent", "[popItem method]")
 {
   // Arrange                                                                      |
   chango client1 = make_shared<Client>("Jose Luis Oemig", 30456987, "Whatsapp");
   chango product1 = make_shared<Product>("Chemical Toilet", 250.5);
-  chango item1 = make_shared<Item>(2, product1);
-  chango rent1 = make_shared<Rent>(client1, 7);
-  rent1->addItem(item1);
+
+  // Crear un inventario con el producto disponible
+  Inventory inventory;
+  inventory.addItem(product1);
+
+  // Crear la renta con el inventario
+  chango rent1 = make_shared<Rent>(client1, 7, inventory);
+
   // Act & Assert                                                                 |
-  REQUIRE(rent1->popItem() == item1);
+  REQUIRE(rent1->popItem()->getProduct() == product1);
 }
+
 TEST_CASE("Correct sendNotification from Rent", "[sendNotification method]")
 {
   // Arrange                                                                      |
   chango client1 = make_shared<Client>("Jose Luis Oemig", 30456987, "Whatsapp");
   chango product1 = make_shared<Product>("Chemical Toilet", 250.5);
-  chango item1 = make_shared<Item>(2, product1);
-  chango rent1 = make_shared<Rent>(client1, 7);
-  rent1->addItem(item1);
+
+  // Crear un inventario con el producto disponible
+  Inventory inventory;
+  inventory.addItem(product1);
+
+  // Crear la renta con el inventario
+  chango rent1 = make_shared<Rent>(client1, 7, inventory);
 
   // Act                                                                          |
   string output = captureOutput([&]
@@ -116,15 +126,22 @@ TEST_CASE("Correct sendNotification from Rent", "[sendNotification method]")
   // Assert                                                                       |
   REQUIRE(output == "Whatsapp : 7 days left to rent expiration\n");
 }
+
 TEST_CASE("Exception thrown when adding Item without Product", "[addItem method]")
 {
   // Arrange                                                                      |
   chango client1 = make_shared<Client>("Jose Luis Oemig", 30456987, "Whatsapp");
-  chango rent1 = make_shared<Rent>(client1, 7);
+
+  // Crear un inventario vacío
+  Inventory inventory;
+
+  // Crear la renta con el inventario
+  chango rent1 = make_shared<Rent>(client1, 7, inventory);
 
   // Act & Assert                                                                 |
   REQUIRE_THROWS_AS(rent1->addItem(make_shared<Item>(2, nullptr)), invalid_argument);
 }
+
 TEST_CASE("Exception thrown for invalid contact method", "[Client constructor]")
 {
   // Arrange, Act & Assert                                                        |
