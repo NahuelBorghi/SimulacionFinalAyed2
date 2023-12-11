@@ -6,10 +6,10 @@
 
 using namespace std;
 
-class Messenger
+class IMensajero
 {
 public:
-  virtual ~Messenger() = default;
+  virtual ~IMensajero() = default;
 
   // Método para enviar la notificación
   virtual void sendNotification() const = 0;

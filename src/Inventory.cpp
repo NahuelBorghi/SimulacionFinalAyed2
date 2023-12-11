@@ -12,7 +12,7 @@ void Inventory::addItem(shared_ptr<Product> product)
   items.push_back({product, ItemState::Available});
 }
 
-vector<InventoryItem> Inventory::getItems()
+vector<InventoryItem> &Inventory::getItems()
 {
   return items;
 }

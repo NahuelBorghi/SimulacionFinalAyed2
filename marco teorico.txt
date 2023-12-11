@@ -1,21 +1,25 @@
+1. ¿Cómo desarrollaría conceptualmente la arquitectura limpia? Desarrolle un esquema gráfico
+que muestre las dependencias..
+2. ¿Qué es UML y en que lo beneficiaría aplicarlo en este caso?
+3. ¿Cómo evitaría las dependencias excesivas el código?:
+3.1 Relacione con S.O.L.I.D
+3.2 Relacione con GRASP
+4. ¿Qué es una Prueba Unitaria? Dar un ejemplo basado en lo expresado más arriba.
+5. Explicar “Cómo” implementaría TDD en este ejemplo. Hacer 2 ciclos completos.
+
 1.Arquitectura Limpia:
-
 La Arquitectura Limpia es un enfoque que busca organizar el código en capas, donde las capas internas no conocen las capas externas. En el centro se encuentran las entidades de dominio, rodeadas por capas de casos de uso, controladores, interfaces y detalles externos como bases de datos y frameworks. Las dependencias fluyen hacia el centro, lo que permite la inversión de dependencias.
-UML (Unified Modeling Language):
 
-2.UML es un lenguaje estándar para visualizar, especificar y documentar modelos de software. Beneficiaría en este caso proporcionando una representación gráfica de las clases, relaciones y estructuras del sistema, facilitando la comprensión del diseño y la comunicación entre desarrolladores.
-Evitar Dependencias Excesivas:
+2. UML (Unified Modeling Language):
+UML es un lenguaje estándar para visualizar, especificar y documentar modelos de software. Beneficiaría en este caso proporcionando una representación gráfica de las clases, relaciones y estructuras del sistema, facilitando la comprensión del diseño y la comunicación entre desarrolladores.
 
+3. Evitar Dependencias Excesivas:
 3.1 S.O.L.I.D: Los principios SOLID, como el Principio de Responsabilidad Única (SRP) y el Principio de Inversión de Dependencias (DIP), ayudan a evitar dependencias excesivas. SRP sugiere que una clase debe tener una sola razón para cambiar, y DIP propone depender de abstracciones en lugar de implementaciones concretas.
-
 3.2 GRASP: Los principios de GRASP (General Responsibility Assignment Software Patterns) también son útiles. Por ejemplo, el Principio de Expertos sugiere asignar la responsabilidad a la clase que tiene la información necesaria para cumplir esa responsabilidad.
 
 4.Prueba Unitaria:
-
 Una prueba unitaria es una evaluación automatizada de una unidad de código, por lo general, una función o método, para garantizar que produce el resultado esperado. Ejemplo:
 
-cpp
-Copy code
 // Caso de prueba
 TEST_CASE("Addition works correctly", "[add method]")
 {
@@ -28,16 +32,18 @@ TEST_CASE("Addition works correctly", "[add method]")
     // Assert
     REQUIRE(result == 5);
 }
-Implementación de TDD:
 
-5.1 Ciclo 1:
+5.Implementación de TDD:
+
+Ciclo 1:
 
 Escribir un caso de prueba que falle.
 Implementar el código mínimo para que la prueba pase.
 Refactorizar si es necesario, manteniendo las pruebas pasando.
-5.2 Ciclo 2:
 
+Ciclo 2:
 Escribir un nuevo caso de prueba que falle o mejore uno existente.
 Implementar el código mínimo.
 Refactorizar si es necesario.
+
 Repetir estos ciclos para desarrollar funcionalidades incrementales y mantener la integridad del código.

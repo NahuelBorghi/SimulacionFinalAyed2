@@ -1,10 +1,10 @@
 #ifndef FBMESSENGER_HPP
 #define FBMESSENGER_HPP
 
-#include <Messenger.hpp>
+#include <IMensajero.hpp>
 
 // Implementación específica para Facebook
-class FbMessenger : public Messenger
+class FbMessenger : public IMensajero
 {
 private:
   int daysLeft;

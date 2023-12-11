@@ -1,10 +1,10 @@
 #ifndef IGMESSENGER_HPP
 #define IGMESSENGER_HPP
 
-#include <Messenger.hpp>
+#include <IMensajero.hpp>
 
 // Implementación específica para Instagram
-class IgMessenger : public Messenger
+class IgMessenger : public IMensajero
 {
 private:
   int daysLeft;

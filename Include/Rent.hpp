@@ -3,7 +3,7 @@
 #pragma once
 
 #include <Client.hpp>
-#include <Messenger.hpp>
+#include <IMensajero.hpp>
 #include <WspMessenger.hpp>
 #include <IgMessenger.hpp>
 #include <FbMessenger.hpp>

@@ -56,7 +56,7 @@ void Rent::sendNotification() const
   string contactMethod = client->getContact();
 
   // Crear el messenger correspondiente según el método de contacto
-  unique_ptr<Messenger> messenger;
+  unique_ptr<IMensajero> messenger;
 
   if (contactMethod == "Whatsapp")
   {
